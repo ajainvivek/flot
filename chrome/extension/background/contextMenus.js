@@ -27,7 +27,7 @@ function popWindow(type) {
 
 chrome.contextMenus.create({
   id: CONTEXT_MENU_ID,
-  title: 'React Chrome Extension Example',
+  title: 'Flot - Floating Video for Youtube, Twitch, Vimeo and other websites',
   contexts: ['all'],
   documentUrlPatterns: [
     'https://github.com/*'

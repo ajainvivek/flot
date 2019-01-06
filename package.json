@@ -1,7 +1,7 @@
 {
-  "name": "react-chrome-extension-boilerplate",
+  "name": "flot",
   "version": "0.9.0",
-  "description": "Boilerplate for Chrome extension React.js project",
+  "description": "Flot - Floating Video for Youtube, Twitch, Vimeo and other websites",
   "scripts": {
     "dev": "node scripts/dev",
     "build": "node scripts/build",
@@ -14,9 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhen0409/react-chrome-extension-boilerplate.git"
+    "url": ""
   },
-  "keywords": ["chrome", "extension", "react", "redux", "hot reload", "webpack", "boilerplate"],
+  "keywords": [
+    "chrome",
+    "extension",
+    "react",
+    "redux",
+    "hot reload",
+    "webpack",
+    "boilerplate"
+  ],
   "author": "Jhen <developer@jhen.me>",
   "license": "MIT",
   "devDependencies": {
@@ -65,6 +73,7 @@
     "react": "^15.0.2",
     "react-dock": "^0.2.3",
     "react-dom": "^15.0.2",
+    "react-plyr": "^2.1.1",
     "react-redux": "^4.3.0",
     "redux": "^3.2.1",
     "redux-thunk": "^2.0.1"

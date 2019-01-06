@@ -1,6 +1,11 @@
 # Flot 
 
-> Floating Video for Youtube, Twitch, Vimeo and other websites
+<p align="center">
+<a href="#" target="_blank">
+<img alt="Flot" title="Flot" src="https://github.com/ajainvivek/flot/blob/master/chrome/assets/img/icon-128.png" width="100">
+</a>
+</p>
+<p align="center">Floating Video for Youtube, Twitch, Vimeo and other websites.</p>
 
 ## Installation
 
@@ -69,6 +74,16 @@ $ npm run build
 $ npm run test-e2e
 ```
 
-## LICENSE
+## Copyright / License
 
-[MIT](LICENSE)
+Copyright 2018-2019 Ajain Vivek and [other contributors](https://github.com/ajainvivek/flot/graphs/contributors)
+
+This software is licensed under the terms of the Mozilla Public License v2.0. See the [COPYRIGHT](https://github.com/ajainvivek/flot/blob/master/COPYRIGHT) and [LICENSE](https://github.com/ajainvivek/flot/blob/master/LICENSE) files.
+
+Please do not use the name Flot to endorse or promote products derived from this software without the maintainers' permission, except as may be necessary to comply with the notice/attribution requirements.
+
+We also wish that any documentation file generated using this software be attributed to Flot. Let's be fair to all contributors by giving credit where credit's due. Thanks!
+
+## Questions?
+
+If you have any questions, please feel free to ask them on github issues.
