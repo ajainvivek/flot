@@ -16,7 +16,8 @@
     "inject.html"
   ],
   "background": {
-    "page": "background.html"
+    "page": "background.html",
+    "persistent": false
   },
   "minimum_chrome_version": "69.0.3483.0",
   "permissions": [ "contextMenus", "management", "tabs", "storage", "<all_urls>" ],

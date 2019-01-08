@@ -6,6 +6,7 @@
     bottom: 0;
     -webkit-perspective: 400;
             perspective: 400;
+     height: 120px;       
   }
   
   .dode-anim .plane {

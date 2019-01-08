@@ -6,12 +6,19 @@ import './inject.css';
 class InjectApp extends Component {
   constructor(props) {
     super(props);
-    this.state = { isEnabled: false, resizeCallbacks: [], iconContainers: [] };
+    this.state = { isEnabled: false, resizeCallbacks: [], iconContainers: [], loaded: false };
   }
 
   componentDidMount() {
     if ('pictureInPictureEnabled' in document) {
-      this.bootstrap();
+      const videos = document.querySelectorAll('video');
+      if (videos.length) {
+        this.setState({
+          loaded: true
+        }, () => {
+          this.bootstrap();
+        });
+      }
     } else {
       console.error(`Browser doesn't support PIP mode!`);
     }
@@ -20,7 +27,6 @@ class InjectApp extends Component {
     let self = this;
 
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      console.log('HERE', request.pip_enabled);
       this.toggleIconState(request.pip_enabled);
     });
 
@@ -38,16 +44,34 @@ class InjectApp extends Component {
         });
       }, 500);
     });
+
+    // check for video element, if it is injected dynamically
+    document.addEventListener('DOMNodeInserted', () => {
+      const videos = document.querySelectorAll('video');
+      if (!this.state.loaded && videos.length) {
+        this.setState({
+          loaded: true
+        }, () => {
+          this.bootstrap();
+          chrome.storage.local.get(['pip_enabled'], (obj) => {
+            const enabled = !!obj.pip_enabled;
+            this.toggleIconState(enabled);
+          });
+        });
+      }
+    });
   }
 
   toggleIconState = (visibility) => {
-    this.state.iconContainers.forEach((icon) => {
-      if (visibility) {
-        icon.style.visibility = 'visible';
-      } else {
-        icon.style.visibility = 'hidden';
-      }
-    });
+    setTimeout(() => {
+      this.state.iconContainers.forEach((icon) => {
+        if (visibility) {
+          icon.style.visibility = 'visible';
+        } else {
+          icon.style.visibility = 'hidden';
+        }
+      });
+    }, 0);
   }
 
   bootstrap = () => {
@@ -89,7 +113,9 @@ class InjectApp extends Component {
           flotContainer.style.display = 'block';
         });
         video.addEventListener('mouseout', (event) => {
-            flotContainer.style.display = 'none';
+            if (event.x > bndRect.x + bndRect.width || event.x < bndRect.x || event.y < bndRect.y || event.y > bndRect.y + bndRect.height) {
+              flotContainer.style.display = 'none';
+            }
         });
         callbacks.push(() => {
           const bndRect = video.getBoundingClientRect();

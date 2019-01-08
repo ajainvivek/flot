@@ -25,6 +25,7 @@ export default class MainSection extends Component {
             <div className="circle"></div>
           </div>
         </div>
+        <div className={`${style.status} status-text`}>Inactive</div>
       </section>
     );
   }

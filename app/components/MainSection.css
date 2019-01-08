@@ -1,7 +1,13 @@
 .main {
   position: relative;
   z-index: 2;
-  top: 50px;
-  margin-top: 20px; 
-  margin-bottom: 160px;
+  height: 160px;
+}
+
+.status {
+  position: absolute;
+  bottom: 8px;
+  text-align: center;
+  width: 100%;
+  font-weight: 500;
 }

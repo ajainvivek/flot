@@ -22,16 +22,21 @@ export default class Header extends Component {
   updateAnimStyle = () => {
     const enabled = this.state.enabled;
     if (enabled) {
-      document.querySelector('.dode-anim').classList.remove('disabled');
-    } else {
       document.querySelector('.dode-anim').classList.add('disabled');
+      document.querySelector('.status-text').innerHTML = 'Active';
+    } else {
+      document.querySelector('.dode-anim').classList.remove('disabled');
+      document.querySelector('.status-text').innerHTML = 'Inactive';
     }
   };
 
   notifyUpdate = () => {
     const enabled = this.state.enabled;
-    console.log('HERE');
-    chrome.runtime.sendMessage({pip_enabled: enabled});
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { pip_enabled: enabled }, function (response) {
+          // showResults(response.results);
+      });
+  });
   };
 
   handleActivatePip = () => {
