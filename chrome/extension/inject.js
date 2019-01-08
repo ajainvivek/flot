@@ -6,7 +6,7 @@ import './inject.css';
 class InjectApp extends Component {
   constructor(props) {
     super(props);
-    this.state = { isEnabled: false, resizeCallbacks: [], iconContainers: [], loaded: false };
+    this.state = { resizeCallbacks: [], iconContainers: [], loaded: false };
   }
 
   componentDidMount() {
@@ -97,13 +97,6 @@ class InjectApp extends Component {
         flotIcon.className = 'icono-support';
         flotContainer.style.cssText = containerStyle;
         flotContainer.addEventListener('click', () => {
-          this.setState({ isEnabled: !this.state.isEnabled }, () => {
-            if(this.state.isEnabled) {
-              flotContainer.style.color = 'rgba(232, 48, 48, 0.87)';
-            } else {
-              flotContainer.style.color = '#6441a4de';
-            }
-          });
           this.togglePip(video);
         });
         flotContainer.addEventListener('mouseover', () => {
@@ -117,6 +110,13 @@ class InjectApp extends Component {
               flotContainer.style.display = 'none';
             }
         });
+        video.addEventListener('enterpictureinpicture', function(event) {
+          flotContainer.style.color = 'rgba(232, 48, 48, 0.87)';
+        });
+    
+        video.addEventListener('leavepictureinpicture', function(event) {
+          flotContainer.style.color = '#6441a4de';
+        });
         callbacks.push(() => {
           const bndRect = video.getBoundingClientRect();
           flotContainer.style.top = `${bndRect.top + 10}px`;
@@ -129,23 +129,6 @@ class InjectApp extends Component {
       }
     });
     this.setState({resizeCallbacks: callbacks, iconContainers});
-  };
-
-  onPipWindowResize = () => {
-    // TODO
-  };
-
-  bindPipEventListener = (video) => {
-    let pipWindow;
-
-    video.addEventListener('enterpictureinpicture', function(event) {
-      pipWindow = event.pictureInPictureWindow;
-      pipWindow.addEventListener('resize', onPipWindowResize);
-    });
-
-    video.addEventListener('leavepictureinpicture', function(event) {
-      pipWindow.removeEventListener('resize', onPipWindowResize);
-    });
   };
 
   togglePip = async (video) => {
