@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "name": "flot",
+  "name": "Flot",
   "manifest_version": 2,
   "description": "Flot - Floating Video for Youtube, Twitch, Vimeo and other websites",
   "browser_action": {
