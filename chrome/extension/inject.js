@@ -106,7 +106,8 @@ class InjectApp extends Component {
           flotContainer.style.display = 'block';
         });
         video.addEventListener('mouseout', (event) => {
-            if (event.x > bndRect.x + bndRect.width || event.x < bndRect.x || event.y < bndRect.y || event.y > bndRect.y + bndRect.height) {
+            const bndRect = video.getBoundingClientRect();
+            if (event.screenX > bndRect.x + bndRect.width || event.screenX < bndRect.x || event.screenY < bndRect.y || event.screenY > bndRect.y + bndRect.height) {
               flotContainer.style.display = 'none';
             }
         });
