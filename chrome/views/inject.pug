@@ -3,9 +3,7 @@ doctype html
 html
   head
     meta(charset='UTF-8')
-    link(href='https://cdn.plyr.io/3.3.21/plyr.css' rel="stylesheet" type="text/css")
-    link(href='https://icono-49d6.kxcdn.com/icono.min.css' rel="stylesheet" type="text/css")
-    title Flot - Any Video Picture-in-Picture
+    title Flot - Floating Video for Youtube, Twitch, Vimeo and other websites
     style.
       html, body {
         background-color: rgba(0,0,0,0)
@@ -14,4 +12,4 @@ html
     #root
     if env !== 'prod'
       script(src='chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/redux-devtools-extension.js')
-    script(src=env == 'prod' ? '/js/todoapp.bundle.js' : 'http://localhost:3000/js/todoapp.bundle.js')
+    script(src=env == 'prod' ? '/js/flotapp.bundle.js' : 'http://localhost:3000/js/flotapp.bundle.js')

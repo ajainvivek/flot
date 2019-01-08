@@ -1,5 +1,7 @@
 .main {
   position: relative;
   z-index: 2;
-  border-top: 1px solid #e6e6e6;
+  top: 50px;
+  margin-top: 20px; 
+  margin-bottom: 160px;
 }

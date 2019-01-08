@@ -67,6 +67,7 @@
     "webpack-httpolyglot-server": "^0.3.0"
   },
   "dependencies": {
+    "antd-mobile": "^2.2.8",
     "autoprefixer": "^7.2.5",
     "bluebird": "^3.3.4",
     "classnames": "^2.1.3",
